@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	/*font-family: 'Hubballi', monospace;*/
+	font-weight: bolder;
+	text-transform: capitalize;
+}
+:root{
+	--primary-color: #2d3436;
+	---back-color: #6c5ce7;
+	--white-color: #fff;
+}
+body{
+	text-align: center;
+	width: 100%;
+	height: auto;
+}
+h1,h2,h3{
+	font-family: 'Open Sans', sans-serif!important;
+}
+.container-xl{
+	width: 100%;
+	height: auto;
+	margin-top: 50px;
+}
+.heading{
+	font-size: 4rem;
+	color: var(---back-color);
+}
+
+.file,.url,.input,span{
+	width: 500px;
+}
+
+span{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}
+.image{
+	width: 90%;
+	height: auto;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	column-gap: 1rem;
+	margin: auto;
+	margin-top: 50px;
+ position: relative;
+}
+.image div{
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: fit-content;
+	position: relative;
+}
+.url{
+	display: none;
+}
+.home{
+	position: fixed;
+	top: 90vh;
+	right: 20px;
+	z-index: 1;
+	font-size: 2rem;
+}
+.delete{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 1;
+}
+@media only screen and (max-width: 1100px){
+	.image{
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+@media only screen and (max-width: 800px){
+	.image{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media only screen and (max-width: 700px){
+
+	.image{
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.file,.url,.input,span{
+		width: 90%;
+	}
+}
+@media only screen and (max-width: 500px){
+	.heading{
+		font-size: 3rem;
+	}
+	.image{
+		width: 98%;
+		grid-template-columns: repeat(1, 1fr);
+	}
+	
+	span{
+		display:  block;
+	}
+
+}

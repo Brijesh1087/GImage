@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+Home | Pictures
+{% endblock %}
+{% block body %}
+	{% if(request.cookies.get(auth)) %}
+	<div class="text-right d-flex justify-content-end align-items-center mx-3 mt-2">
+			<a href="/" class=" btn btn-dark mx-1">Home</a>
+			<a href="/signout" class=" btn btn-dark mx-1">Sign Out</a>
+		</div>
+		<div class="mt-5">
+			<h1 class=" display-4 font-weight-bold">GImage</h1>
+		<form action="/upload"method="post" class="my-4"  enctype="multipart/form-data">
+			<div class="btn-group shadow text-left my-2" role="group" aria-label="Basic outlined example">
+			  <button type="button" class="btn btn-outline-dark btn_file px-5">FILE</button>
+			  <button type="button" class="btn btn-outline-dark btn_url px-5">URL</button>
+			 
+			</div>
+			<input  type="file" name="file" class="shadow file form-control  mx-auto ">
+
+			<input required type="text" class="form-control mx-auto shadow url " placeholder="Pictures URL..." name="url">
+			<div class="d-flex justify-content-start align-items-center  mx-auto input mt-2">
+				<div class="form-check  ">
+				  <input value="Public" class="form-check-input" type="radio" name="default" id="flexRadioDefault1" checked>
+				  <label class="form-check-label" for="flexRadioDefault1">
+				   Public
+				  </label>
+				</div>
+				<div class="form-check mx-3">
+				  <input value="Private" class="form-check-input" type="radio" name="default" id="flexRadioDefault2" >
+				  <label class="form-check-label" for="flexRadioDefault2">
+				    Private
+				  </label>
+				</div>
+			</div>
+			<br>
+			<input  type="submit" value="upload" class=" shadow btn btn-dark px-5 btn-lg text-upper">
+		</form>
+		</div>
+		<div class="image mx-auto mb-3">
+					{% set path = request.cookies.get(auth) %}
+			{% for x in image %}
+			<div class="p-2 shadow my-2">
+				<a href="/delete/{{x}}" class="bi btn btn-outline-dark btn-sm bi-trash3 delete " ></a>
+				<img src="static/{{path}}/{{x}}" class="img-fluid" alt="x">
+				<br>
+				<div class="d-flex justify-content-between px-1 py-2 align-items-center mt-1">
+					<a href="static/{{path}}/{{x}}" class="  btn btn-outline-dark btn-sm">View</a>
+					<a href="static/{{path}}/{{x}}" download="true" class="bi bi-download btn-outline-dark btn-sm btn  " ></a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+{% endblock %}

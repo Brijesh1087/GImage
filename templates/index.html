@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+Home | Pictures
+{% endblock %}
+{% block body %}
+	{% if not(request.cookies.get(auth)) %}
+		<div class="text-right d-flex justify-content-end align-items-center mx-3 mt-2">
+			<a href="/join" class=" btn btn-dark mx-1">Join</a>
+			<a href="/login" class=" btn btn-dark mx-1">Login</a>
+		</div>
+		{% else %}
+		<div class="text-right d-flex justify-content-end align-items-center mx-3 mt-2">
+			<a href="/upload" class=" btn btn-dark mx-1">Upload</a>
+			<a href="/signout" class=" btn btn-dark mx-1">Sign Out</a>
+		</div>
+		{% endif %}
+	<div class="container-xl">
+	
+		<h1 class="display-4 font-weight-bold">GImage</h1>
+		<div class="image mx-auto mb-3">
+			{% for x in image %}
+			<div class="p-2 shadow my-2">
+				
+				<img src="static/image/{{x}}" class="img-fluid" alt="x">
+				<br>
+				<div class="d-flex justify-content-between px-1 py-2 align-items-center mt-1">
+					<a href="static/image/{{x}}" class="  btn btn-outline-dark btn-sm">View</a>
+					<a href="static/image/{{x}}" download="true" class="bi bi-download btn-outline-dark btn-sm btn  " ></a>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<a href="#home" class="bi bi-arrow-up-circle-fill home text-dark"></a>
+	</div>
+	
+{% endblock %}

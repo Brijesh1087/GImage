@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+Login | Pictures
+{% endblock %}
+{% block body %}
+<div class="alert text-center text-capitalize bg-danger text-white alert-dismissible fade hide {{response}} py-4" role="alert">
+ {{error}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="container mt-5">
+	<div class="container mt-5 text-center">
+		<h1 class="display-4 font-weight-bold">Login</h1>
+		<p class="text-capitalize">welcome back</p>
+		<form action="/login" method="post">
+			<input required  type="email" name="username"  placeholder="email" class="form-control mx-auto my-1 input text-lowercase">
+			<input required type="text" name="password" placeholder="password" class="form-control mx-auto my-1 input text-lowercase">
+			
+			<input type="submit" value="Login" class="btn btn-dark mt-2 px-5">
+		</form>
+		<div class="mt-4">
+			<span class=" border rounded p-sm-2" > <b>Don't have an account ?</b><a href="/join" class="nav-link text-capitalize">join gimage</a></span>
+		</div>
+	</div>
+</div>
+{% endblock %}
